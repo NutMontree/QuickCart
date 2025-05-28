@@ -16,7 +16,7 @@ const ProductList = () => {
 
   const fetchSellerProduct = async () => {
     try {
-      const tolen = await getToken();
+      const token = await getToken();
 
       const { data } = await axios.get("/api/product/seller-list", {
         headers: { Authorization: `Bearer ${token}` },
@@ -29,13 +29,13 @@ const ProductList = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(data.message);
+      toast.error(error.message);
     }
   };
 
   useEffect(() => {
     if (user) {
-      fetchSellerProduct()
+      fetchSellerProduct();
     }
   }, [user]);
 

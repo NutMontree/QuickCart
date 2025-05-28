@@ -7,7 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const AddProduct = () => {
-  const { getToken } = useAppContext;
+  const { getToken } = useAppContext();
 
   const [files, setFiles] = useState([]);
   const [name, setName] = useState("");
@@ -28,7 +28,7 @@ const AddProduct = () => {
     formData.append("offerPrice", offerPrice);
 
     for (let i = 0; i < files.length; i++) {
-      formData.append("image", files[i]);
+      formData.append("images", files[i]);
     }
 
     try {

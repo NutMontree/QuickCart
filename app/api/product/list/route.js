@@ -1,5 +1,5 @@
 import connectDB from "@/config/db"
-import Product from "@/models/Prodict"
+import Product from "@/models/Product"
 import { NextResponse } from "next/server"
 
 

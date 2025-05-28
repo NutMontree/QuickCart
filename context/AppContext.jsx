@@ -18,7 +18,7 @@ export const AppContextProvider = (props) => {
 
   const { user } = useUser();
   const { getToken } = useAuth;
-  
+
   const [products, setProducts] = useState([]);
   const [userData, setUserData] = useState(false);
   const [isSeller, setIsSeller] = useState(false);
@@ -49,15 +49,15 @@ export const AppContextProvider = (props) => {
       const { data } = await axios.get("/api/user/data", {
         headers: { Authorization: `Bearer ${token}` },
       });
+
       if (data.success) {
         setUserData(data.user);
         setCartItems(data.user.cartItems);
       } else {
         toast.error(data.message);
       }
-      // setUserData(userDummyData);
     } catch (error) {
-      toast.error(data.message);
+      toast.error(error.message);
     }
   };
 
