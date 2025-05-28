@@ -6,9 +6,9 @@ export const inngest = new Inngest({ id: "Ecommers-Test" });
 
 
 // Inngest Function to save useer data to a database
-export const syncUserCreateion = inngest.createFunction(
+export const syncUserCreation = inngest.createFunction(
     {
-        id: 'sync-uer-from-Clerk'
+        id: 'sync-user-from-clerk'
     },
     { event: 'clerk/user.create' },
     async ({ event }) => {
@@ -25,9 +25,9 @@ export const syncUserCreateion = inngest.createFunction(
 )
 
 //Inngest Fuction to Update user data in database
-export const syncUserUpdateion = inngest.createFunction(
+export const syncUserUpdation = inngest.createFunction(
     {
-        id: 'update-uer-from-Clerk'
+        id: 'update-user-from-clerk'
     },
     { event: 'clerk/user.update' },
     async ({ event }) => {
@@ -44,9 +44,9 @@ export const syncUserUpdateion = inngest.createFunction(
 )
 
 // Inngestr Fuction to delete user data in database
-export const syncDeletion = inngest.createFunction(
+export const syncUserDeletion = inngest.createFunction(
     {
-        id: 'delete-uer-from-Clerk'
+        id: 'delete-user-from-clerk'
     },
     { event: 'clerk/user.delete' },
     async ({ event }) => {
