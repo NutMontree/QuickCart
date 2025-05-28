@@ -1,7 +1,7 @@
 import { addressDummyData } from "@/assets/assets";
 import { useAppContext } from "@/context/AppContext";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const OrderSummary = () => {
@@ -21,14 +21,13 @@ const OrderSummary = () => {
   const [userAddresses, setUserAddresses] = useState([]);
 
   const fetchUserAddresses = async () => {
-    // setUserAddresses(addressDummyData);
     try {
       const token = await getToken();
       const { data } = await axios.get("/api/user/get-address", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (data.success) {
-        setUserAddresses(data.address);
+        setUserAddresses(data.addresses);
         if (data.address.length > 0) {
           setSelectedAddress(data.address[0]);
         }
@@ -51,7 +50,7 @@ const OrderSummary = () => {
     if (user) {
       fetchUserAddresses();
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">

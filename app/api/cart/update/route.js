@@ -1,4 +1,3 @@
-// import { getAuth } from "@clerk/nextjs/dist/types/server"
 import connectDB from "@/config/db"
 import User from '@/models/User'
 import { getAuth } from "@clerk/nextjs/server"

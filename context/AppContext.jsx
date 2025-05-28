@@ -1,5 +1,4 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -29,7 +28,7 @@ export const AppContextProvider = (props) => {
       const { data } = await axios.get("/api/product/list");
 
       if (data.success) {
-        setProducts(data.product);
+        setProducts(data.products);
       } else {
         toast.error(data.message);
       }
