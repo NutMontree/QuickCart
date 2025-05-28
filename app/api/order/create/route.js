@@ -1,5 +1,5 @@
 import Product from "@/models/Product";
-import { getAuth } from "@clerk/nextjs/dist/types/server";
+import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
@@ -16,7 +16,7 @@ export async function POST(request) {
             return acc + product.offerPrice * item.quantity
         }, 0)
 
-        
+
 
     } catch (error) {
         toast.error(error.message)
