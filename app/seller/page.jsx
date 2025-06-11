@@ -180,6 +180,10 @@ const AddProduct = () => {
           </button>
         </form>
         {/* <Footer /> */}
+
+        <div>
+          <button color="primary">Button</button>;
+        </div>
       </div>
     </>
   );
