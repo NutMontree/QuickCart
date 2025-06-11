@@ -15,10 +15,9 @@ cloudinary.config({
 
 export async function POST(request) {
     try {
-        const { userID } = getAuth(request)
+        const { userId } = getAuth(request)
 
-
-        const isSeller = await authSeller(userID)
+        const isSeller = await authSeller(userId)
 
         if (!isSeller) {
             return NextResponse.json({ success: false, message: "not authorized" })
@@ -62,7 +61,7 @@ export async function POST(request) {
 
         await connectDB()
         const newProduct = await Product.create({
-            userID,
+            userId,
             name,
             description,
             category,
@@ -75,6 +74,7 @@ export async function POST(request) {
         return NextResponse.json({ success: true, message: "Upload successfull", newProduct })
 
     } catch (error) {
-        return NextResponse.json({ success: false, message: error.message })
+        // return NextResponse.json({ success: false, message: error.message })
+        NextResponse.json({ success: false, message: error.message })
     }
 }
