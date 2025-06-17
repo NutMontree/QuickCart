@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { productsDummyData } from "@/assets/assets";
 
 export const AppContext = createContext();
 
@@ -20,6 +21,7 @@ export const AppContextProvider = (props) => {
 
   const [products, setProducts] = useState([]);
   const [userData, setUserData] = useState(false);
+  // ส่วนนี้ต้องไปตั้งค่าที่ https://dashboard.clerk.com/ ให้ user เป็น "role": "seller"
   const [isSeller, setIsSeller] = useState(false);
   const [cartItems, setCartItems] = useState({});
 
@@ -35,11 +37,12 @@ export const AppContextProvider = (props) => {
     } catch (error) {
       toast.error(error.message);
     }
+    // อันนี้ตัวอย่าง Data
+    setProducts(productsDummyData); // มาเอาออกด้วยนะ
   };
 
   const fetchUserData = async () => {
     try {
-      
       if (user.publicMetadata.role === "seller") {
         setIsSeller(true);
       }

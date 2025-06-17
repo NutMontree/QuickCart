@@ -8,9 +8,10 @@ import Product from "@/models/Product";
 
 //Config cloudinary
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    // cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    // api_key: process.env.CLOUDINARY_API_KEY,
+    // api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloudinary_url: process.env.CLOUDINARY_URL
 })
 
 export async function POST(request) {
@@ -22,6 +23,7 @@ export async function POST(request) {
         if (!isSeller) {
             return NextResponse.json({ success: false, message: "not authorized" })
         }
+
         const formData = await request.formData()
 
         const name = formData.get("name")
